@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head}"></head>
+<body>
+  <div th:replace="~{base :: logo}"></div>
+    <div class="container">
+      <div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
+        <div class="card mb-3" th:each="pedido : ${pedidos}">
+          <div class="card-header" th:text="${pedido.nome}">Nome do Produto</div>
+          <div class="card-body">
+            <div th:text="${pedido.descricao}" ></div>
+            <div th:text="${pedido.valor}" ></div>
+            <div th:text="${pedido.dataPedido}" ></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+</html>
