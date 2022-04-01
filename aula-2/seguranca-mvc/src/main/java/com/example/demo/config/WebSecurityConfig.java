@@ -62,22 +62,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService users(DataSource dataSource){
         UserDetails user =
                 User.builder()
-                        .username("user")
+                        .username("user1")
                         .password(passwordEncoder().encode("pass"))
-                        .roles("User")
+                        .roles("Admin")
                         .build();
 
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-//        users.createUser(user);
+        users.createUser(user);
 //        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager(user);
         return users;
     }
-
-//    @Bean
-//    DataSource dataSource() {
-//        return new EmbeddedDatabaseBuilder()
-//                .setType(H2)
-//                .addScript("classpath:org/springframework/security/core/userdetails/jdbc/users.ddl")
-//                .build();
-//    }
 }
